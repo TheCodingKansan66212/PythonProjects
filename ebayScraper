@@ -1,0 +1,49 @@
+import requests
+from bs4 import BeautifulSoup
+import numpy as np
+import pandas as pd
+
+# Define the URL of the eBay page you want to scrape
+url = "https://www.ebay.com/sch/i.html?_nkw=automobile"
+
+# Send a GET request to the URL and retrieve the HTML content
+response = requests.get(url)
+html_content = response.content
+
+# Create a BeautifulSoup object to parse the HTML content
+soup = BeautifulSoup(html_content, "html.parser")
+
+# Find all the automobile listings on the page
+listings = soup.find_all("li", class_="s-item")
+
+# Initialize empty lists to store data
+titles = []
+prices = []
+conditions = []
+
+# Extract data from each listing and store it in respective lists
+for listing in listings:
+    title = listing.find("h3", class_="s-item__title").text.strip()
+    price = listing.find("span", class_="s-item__price").text.strip()
+    condition = listing.find("span", class_="SECONDARY_INFO").text.strip()
+    
+    titles.append(title)
+    prices.append(price)
+    conditions.append(condition)
+
+# Create a NumPy array from the extracted data
+titles_arr = np.array(titles)
+prices_arr = np.array(prices)
+conditions_arr = np.array(conditions)
+
+# Create a pandas DataFrame from the NumPy arrays
+data = {
+    "Title": titles_arr,
+    "Price": prices_arr,
+    "Condition": conditions_arr
+}
+df = pd.DataFrame(data)
+
+# Print the DataFrame with scraped data
+print(df)
+
