@@ -1,0 +1,29 @@
+import os
+
+def rename_files(directory, prefix):
+    # Get the list of files in the directory
+    file_list = os.listdir(directory)
+    
+    for filename in file_list:
+        # Construct the new filename with the specified prefix
+        new_filename = f"{prefix}_{filename}"
+        
+        # Get the full path of the current file
+        old_filepath = os.path.join(directory, filename)
+        
+        # Get the full path of the new file
+        new_filepath = os.path.join(directory, new_filename)
+        
+        # Rename the file
+        os.rename(old_filepath, new_filepath)
+        
+        print(f"Renamed {filename} to {new_filename}")
+
+# Set the directory where your files are located
+directory = "/path/to/files"
+
+# Set the prefix you want to add to each filename
+prefix = "new"
+
+# Call the rename_files() function with the directory and prefix
+rename_files(directory, prefix)
