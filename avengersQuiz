@@ -1,0 +1,46 @@
+def avenger_quiz():
+    print("Welcome to the Avenger Quiz!")
+    print("Answer the following questions to find out which Avenger you are.")
+    print("-----------------------------------------")
+    
+    # Questions and corresponding options
+    questions = [
+        "What is your favorite color?\n(a) Red\n(b) Blue\n(c) Green\n",
+        "What is your preferred superpower?\n(a) Super strength\n(b) Flight\n(c) Mind control\n",
+        "What is your ideal way to spend a day off?\n(a) Training and honing skills\n(b) Relaxing at home\n(c) Exploring new places\n"
+    ]
+    
+    # Points for each answer
+    points = {
+        'a': 0,
+        'b': 0,
+        'c': 0
+    }
+    
+    # Ask each question and update points based on user's answers
+    for i, question in enumerate(questions):
+        answer = input(question)
+        
+        if answer.lower() == 'a':
+            points['a'] += 1
+        elif answer.lower() == 'b':
+            points['b'] += 1
+        elif answer.lower() == 'c':
+            points['c'] += 1
+    
+    # Determine the Avenger based on the highest score
+    max_points = max(points.values())
+    
+    if max_points == points['a']:
+        avenger = "Iron Man"
+    elif max_points == points['b']:
+        avenger = "Captain America"
+    else:
+        avenger = "Thor"
+    
+    print("-----------------------------------------")
+    print(f"You are {avenger}!")
+    
+
+# Run the quiz
+avenger_quiz()
