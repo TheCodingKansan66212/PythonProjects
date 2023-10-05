@@ -1,0 +1,12 @@
+import re
+
+def regex_query(pattern, text):
+    matches = re.findall(pattern, text)
+    return matches
+
+# Example usage
+pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+text = 'Emails: john@example.com, jane@example.com'
+
+result = regex_query(pattern, text)
+print(result)
