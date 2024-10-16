@@ -1,0 +1,13 @@
+#Python algorithm to count the numer of row and columns in the data list. 
+
+import pandas as pd
+
+def getDataframeSize(players: pd.DataFrame) -> List[int]:
+    rows, columns = players.shape
+
+    return [rows, columns]
+
+    players = pd.DataFrame(data)
+
+    result = get_dataframe_shape(players)
+    print(result)
