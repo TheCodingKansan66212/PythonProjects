@@ -1,0 +1,12 @@
+#uses head method from Python's pandas librrary to pull data from DataFrame into the function, then use the function call with the employees data passed in as a variable
+#print() displays the result.
+
+import pandas as pd
+
+def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
+    return employees.head(3)
+
+    employees = pd.DataFrame(data)
+
+    result = selectFirstRows(employees)
+    print(result)
